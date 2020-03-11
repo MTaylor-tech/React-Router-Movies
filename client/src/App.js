@@ -8,7 +8,6 @@ import SavedList from './Movies/SavedList';
 const App = () => {
   const [savedList, setSavedList] = useState( [] );
   const [savedIds, setSavedIds] = useState([]);
-  const [currentId, setCurrentId] = useState();
 
   const addToSavedList = movie => {
     if (!savedIds.includes(movie.id)) {
@@ -19,9 +18,9 @@ const App = () => {
 
   return (
     <div>
-      <SavedList list={savedList} currentId={currentId} />
+      <SavedList list={savedList} />
       <Route exact path="/" component={MovieList} />
-      <Route path="/movies/:id" render={props=><Movie {...props} addToSavedList={addToSavedList} setId={(id)=>setCurrentId(id)} />}/>
+      <Route path="/movies/:id" render={props=><Movie {...props} addToSavedList={addToSavedList} />}/>
     </div>
   );
 };
